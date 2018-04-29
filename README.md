@@ -55,16 +55,24 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get dist-upgrade
 ```
+```sh
+pi@raspberrypi:~ $ lsb_release -a
+```
+```sh
+No LSB modules are available.
+Distributor ID: Raspbian
+Description:    Raspbian GNU/Linux 9.4 (stretch)
+Release:        9.4
+Codename:       stretch
+```
 
 ## Git
-
 ### Installation
 ```sh
 $ apt-get install git
 ```
   
 ## Docker
-  
 ### Installation
 ```sh
 curl -sSL get.docker.com | sh
