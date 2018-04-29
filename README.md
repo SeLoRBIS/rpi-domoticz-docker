@@ -1,5 +1,61 @@
 # Domoticz Docker for RPI (v.8153)
 
+## Raspian
+
+### Download Raspbian
+```
+https://www.raspberrypi.org/downloads/raspbian/
+```
+
+### Installation
+#### Wifi
+```
+https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
+```
+```
+wpa_passphrase "testing" "testingPassword"
+```
+```
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+```
+Hidden pwd : scan_ssid
+```
+network={
+    ssid="yourHiddenSSID"
+    scan_ssid=1
+    psk="Your_wifi_password"
+}
+```
+#### Static IP
+```
+sudo nano /etc/dhcpcd.conf
+```
+```
+#static IP configuration
+
+interface wlan0
+static ip_address=192.168.1.34/24
+static routers=192.168.1.254
+static domain_name_servers=192.168.1.254
+```
+#### SSH
+As of the November 2016 release, Raspbian has the SSH server disabled by default. 
+You will have to enable it manually. This is done using raspi-config:
+
+Enter sudo raspi-config in the terminal, first select , then navigate to ssh, press Enter and select Enable or disable ssh server.
+```sh
+sudo raspi-config
+```
+- Select Interfacing options + Enter
+- Select Enable or disable ssh server
+
+### Update
+```sh
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+```
+
 ## Domoticz
 https://github.com/SeLoRBIS/rpi-domoticz-docker
 
@@ -177,3 +233,16 @@ sudo docker run
  -p 8084:8080
  --name domoticz --restart=always -d my_domoticz
 ```
+
+#### How to get bash or ssh into a running container in background mode?
+For getting the ID
+```sh
+sudo docker ps
+```
+For SSH into container
+```sh
+sudo docker exec -i -t e766a56120a7 /bin/bash #by ID
+```
+or
+```sh
+sudo docker exec -i -t domoticz /bin/bash #by Name
