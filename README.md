@@ -3,19 +3,19 @@
 ## Raspian
 
 ### Download Raspbian
-```
+```sh
 https://www.raspberrypi.org/downloads/raspbian/
 ```
 
 ### Installation
 #### Wifi
-```
+```sh
 https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
 ```
 ```
 wpa_passphrase "testing" "testingPassword"
 ```
-```
+```sh
 sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 ```
 Hidden pwd : scan_ssid
@@ -27,10 +27,10 @@ network={
 }
 ```
 #### Static IP
-```
+```sh
 sudo nano /etc/dhcpcd.conf
 ```
-```
+```sh
 #static IP configuration
 
 interface wlan0
@@ -55,6 +55,44 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get dist-upgrade
 ```
+
+## Git
+
+### Installation
+```sh
+$ apt-get install git
+```
+  
+## Docker
+  
+### Installation
+```sh
+curl -sSL get.docker.com | sh
+```
+Warning !!   
+Don't install docker v18.02-ce a issue is open : 
+https://github.com/docker/for-linux/issues/211 
+
+If you wan't downgrade look the cache versions :
+```sh
+sudo apt-cache policy docker-ce
+```  
+
+And install the version you wan't (ex : 18.01.0) : 
+```sh
+sudo apt-get install docker-ce=18.01.0~ce-0~raspbian
+```
+
+The installation downgrade the actual version.
+  
+### Docker-compose intallation
+```sh
+$ sudo curl -L https://github.com/javabean/arm-compose/releases/download/1.16.1/docker-compose-Linux-armv7l -o /usr/local/bin/docker-compose
+```
+  
+```sh
+$ sudo chmod +x /usr/local/bin/docker-compose
+``` 
 
 ## Domoticz
 https://github.com/SeLoRBIS/rpi-domoticz-docker
