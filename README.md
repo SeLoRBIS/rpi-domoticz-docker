@@ -110,6 +110,15 @@ https://gitlab.com/gwc-domotique/rpi-domoticz-docker
 git clone https://gitlab.com/gwc-domotique/rpi-domoticz-docker.git
 ```
 
+Warning !!
+Since the v4.9700 you need add the "libcurl4-gnutls-dev"
+In your Dockerfile :
+```sh
+...
+RUN apt-get install -y libcurl4-gnutls-dev
+...
+```
+
 ### Build and run
 ```sh
 # create volumes
