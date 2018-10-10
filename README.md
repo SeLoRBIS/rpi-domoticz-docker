@@ -1,4 +1,4 @@
-# Domoticz Docker for RPI (v.8153)
+# Domoticz Docker for RPI (v.4.9700)
 
 ## Raspian
 
@@ -103,11 +103,11 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 ``` 
 
 ## Domoticz
-https://github.com/SeLoRBIS/rpi-domoticz-docker
+https://gitlab.com/gwc-domotique/rpi-domoticz-docker
 
 ### Clone
 ```sh
-git clone https://github.com/SeLoRBIS/rpi-domoticz-docker.git
+git clone https://gitlab.com/gwc-domotique/rpi-domoticz-docker.git
 ```
 
 ### Build and run
