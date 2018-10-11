@@ -1,4 +1,4 @@
-# Domoticz Docker for RPI (v.8153)
+# Domoticz Docker for RPI (v.4.9700)
 
 ## Raspian
 
@@ -103,11 +103,20 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 ``` 
 
 ## Domoticz
-https://github.com/SeLoRBIS/rpi-domoticz-docker
+https://gitlab.com/gwc-domotique/rpi-domoticz-docker
 
 ### Clone
 ```sh
-git clone https://github.com/SeLoRBIS/rpi-domoticz-docker.git
+git clone https://gitlab.com/gwc-domotique/rpi-domoticz-docker.git
+```
+
+Warning !!
+Since the v4.9700 you need add the "libcurl4-gnutls-dev"
+In your Dockerfile :
+```sh
+...
+RUN apt-get install -y libcurl4-gnutls-dev
+...
 ```
 
 ### Build and run
