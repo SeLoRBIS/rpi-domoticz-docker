@@ -302,10 +302,11 @@ sudo docker exec -i -t e766a56120a7 /bin/bash #by ID
 or
 ```sh
 sudo docker exec -i -t domoticz /bin/bash #by Name
+```
 
 #### Inspect a restarting contener
 Add in your docker-compose.yml file
-```
-command: tail -f /dev/null
 ```sh
+command: tail -f /dev/null
+```
 And re run your container, you can now inspect your contener
