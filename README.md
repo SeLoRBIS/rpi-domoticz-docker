@@ -289,6 +289,7 @@ sudo docker run
  --name domoticz --restart=always -d my_domoticz
 ```
 
+### DEBUG
 #### How to get bash or ssh into a running container in background mode?
 For getting the ID
 ```sh
@@ -301,3 +302,10 @@ sudo docker exec -i -t e766a56120a7 /bin/bash #by ID
 or
 ```sh
 sudo docker exec -i -t domoticz /bin/bash #by Name
+
+#### Inspect a restarting contener
+Add in your docker-compose.yml file
+```
+command: tail -f /dev/null
+```sh
+And re run your container, you can now inspect your contener
