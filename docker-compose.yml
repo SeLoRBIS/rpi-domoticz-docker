@@ -6,8 +6,8 @@ services:
     image: domoticz:4.9700
     build:
       context: .
-    devices:
-      - "/dev/ttyUSBZSTICK" 
+#    devices:
+#      - "/dev/ttyUSBZSTICK" 
     volumes:
       - /etc/localtime:/etc/localtime
       - ./volumes/backup/domoticz.db:/root/domoticz/domoticz.db:rw
