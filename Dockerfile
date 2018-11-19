@@ -1,7 +1,6 @@
-# Dockerfile for Rpi-Domoticz Base image.
 FROM resin/rpi-raspbian:stretch
 
-MAINTAINER Gwendal CHARLES
+MAINTAINER Gwendal CHARLES <gwendaldev@gmail.com>
 
 # Install Domoticz from sources.
 RUN apt-get update && apt-get install -y cmake apt-utils build-essential curl

@@ -2,12 +2,12 @@ version: '3.6'
 
 services:
   domoticz:
-    container_name: caromoticz-elec
+    container_name: domoticz-home
     image: domoticz:4.9700
     build:
       context: .
-#    devices:
-#      - "/dev/ttyUSBGCE"
+    devices:
+      - "/dev/ttyUSBZSTICK" 
     volumes:
       - /etc/localtime:/etc/localtime
       - ./volumes/backup/domoticz.db:/root/domoticz/domoticz.db:rw
