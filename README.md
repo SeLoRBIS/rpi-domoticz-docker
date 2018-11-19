@@ -95,7 +95,7 @@ The installation downgrade the actual version.
   
 ### Docker-compose intallation
 ```sh
-$ sudo curl -L https://github.com/javabean/arm-compose/releases/download/1.16.1/docker-compose-Linux-armv7l -o /usr/local/bin/docker-compose
+$ sudo curl -L https://github.com/javabean/arm-compose/releases/download/1.21.2/docker-compose-Linux-armv7l -o /usr/local/bin/docker-compose
 ```
   
 ```sh
