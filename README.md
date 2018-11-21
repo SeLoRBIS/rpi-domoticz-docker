@@ -93,7 +93,7 @@ sudo apt-get install docker-ce=18.01.0~ce-0~raspbian
 
 The installation downgrade the actual version.
   
-### Docker-compose intallation
+### Docker-compose installation
 ```sh
 $ sudo curl -L https://github.com/javabean/arm-compose/releases/download/1.21.2/docker-compose-Linux-armv7l -o /usr/local/bin/docker-compose
 ```
@@ -130,11 +130,17 @@ sudo chmod +x create_volumes.sh
 docker-compose up
 ```
 
-If you don't have any controller remove the device line in the docker-compose.yml file
+If you have a controller add the device line in the docker-compose.yml file
 
 ```sh
 devices:
    - "/dev/ttyACM0:/dev/ttyACM0"
+```
+or if the USB ports are fixed (ex below)
+```sh
+devices:
+      - "/dev/ttyUSBZSTICK"
+      ...
 ```
 
 ### Fix USB ports
