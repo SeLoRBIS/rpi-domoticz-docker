@@ -1,6 +1,6 @@
-# Domoticz Docker for RPI (v.8153)
+# Domoticz Docker for RPI (latest release)
 
-## Raspian
+## Raspbian
 
 ### Download Raspbian
 ```sh
@@ -26,7 +26,7 @@ network={
     psk="Your_wifi_password"
 }
 ```
-#### Static IP
+#### Static IP (Optional)
 ```sh
 sudo nano /etc/dhcpcd.conf
 ```
@@ -103,11 +103,20 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 ``` 
 
 ## Domoticz
-https://github.com/SeLoRBIS/rpi-domoticz-docker
+https://gitlab.com/gwc-domotique/rpi-domoticz-docker
 
 ### Clone
 ```sh
-git clone https://github.com/SeLoRBIS/rpi-domoticz-docker.git
+git clone https://gitlab.com/gwc-domotique/rpi-domoticz-docker.git
+```
+
+Warning !!
+Since the v4.9700 you need add the "libcurl4-gnutls-dev"
+In your Dockerfile :
+```sh
+...
+RUN apt-get install -y libcurl4-gnutls-dev
+...
 ```
 
 ### Build and run
@@ -255,7 +264,7 @@ E: USEC_INITIALIZED=3926090
 
 ### Run without docker-compose
 
-#### With 1 USB port no fixing
+#### With 1 USB port no fixing (floorplans and scripts volumes are optional)
 ```sh
 sudo docker run 
 --device=/dev/ttyACM0 
@@ -267,7 +276,7 @@ sudo docker run
 --name domoticz --restart=always -d my_domoticz
 ```
 
-#### With 2 USB ports fixing
+#### With 2 USB ports fixing (floorplans and scripts volumes are optional)
 ```sh
  sudo docker run 
  --device=/dev/ttyUSBZSTICK 
@@ -280,6 +289,7 @@ sudo docker run
  --name domoticz --restart=always -d my_domoticz
 ```
 
+### DEBUG
 #### How to get bash or ssh into a running container in background mode?
 For getting the ID
 ```sh
@@ -287,8 +297,16 @@ sudo docker ps
 ```
 For SSH into container
 ```sh
-sudo docker exec -i -t e766a56120a7 /bin/bash #by ID
+sudo docker exec -i -t {container_id} /bin/bash #by ID
 ```
 or
 ```sh
-sudo docker exec -i -t domoticz /bin/bash #by Name
+sudo docker exec -i -t {container_name} /bin/bash #by Name
+```
+
+#### Inspect a restarting container
+Add in your docker-compose.yml file
+```sh
+command: tail -f /dev/null
+```
+And re run your container, you can now inspect your container

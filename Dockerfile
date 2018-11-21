@@ -1,27 +1,19 @@
-#
-# Dockerfile for Rpi-Domoticz
-#
+FROM resin/rpi-raspbian:stretch
 
-# Base image.
-FROM resin/rpi-raspbian:jessie
-
-MAINTAINER Gwendal CHARLES
+MAINTAINER Gwendal CHARLES <gwendaldev@gmail.com>
 
 # Install Domoticz from sources.
-RUN apt-get update && apt-get install -y cmake apt-utils build-essential
-RUN apt-get install -y libboost-dev libboost-thread-dev libboost-system-dev libsqlite3-dev subversion curl libcurl4-openssl-dev libusb-dev zlib1g-dev
+RUN apt-get update && apt-get install -y cmake apt-utils build-essential curl wget
+RUN apt-get install -y libboost-dev libboost-thread-dev libboost-system-dev libsqlite3-dev libcurl4-openssl-dev libusb-dev zlib1g-dev
+RUN apt-get install -y libcurl4-gnutls-dev
 RUN apt-get install -y iputils-ping
-RUN apt-get install -y python3-dev python3-pip
 RUN apt-get clean && apt-get autoclean
-RUN pip3 install Crypto broadlink pyaes
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Add packages in container
-ADD domoticz_linux_armv7l.tgz /root/domoticz
-ADD plugin_broadlink.tar.gz /root/domoticz/plugins/Broadlink
-
-RUN cp -r /usr/local/lib/python3.4/dist-packages/Crypto/ /usr/lib/python3.4/ && \
-  cp -r /usr/local/lib/python3.4/dist-packages/broadlink /usr/lib/python3.4/
+# Get last domoticz release and add packages in container
+RUN mkdir -p /root/domoticz
+RUN wget -q https://releases.domoticz.com/releases/release/domoticz_linux_armv7l.tgz && \
+    tar xzf domoticz_linux_armv7l.tgz -C /root/domoticz/
 
 # Expose port.
 EXPOSE 8080
