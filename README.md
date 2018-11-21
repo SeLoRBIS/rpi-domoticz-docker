@@ -95,7 +95,7 @@ The installation downgrade the actual version.
   
 ### Docker-compose installation
 ```sh
-$ sudo curl -L https://github.com/javabean/arm-compose/releases/download/1.21.2/docker-compose-Linux-armv7l -o /usr/local/bin/docker-compose
+$ sudo curl -L https://github.com/javabean/arm-compose/releases/download/1.23.1/docker-compose-Linux-armv7l -o /usr/local/bin/docker-compose
 ```
   
 ```sh
@@ -103,19 +103,25 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 ``` 
 
 ## Domoticz
-https://gitlab.com/gwc-domotique/rpi-domoticz-docker
 
-### Clone
-```sh
-git clone https://gitlab.com/gwc-domotique/rpi-domoticz-docker.git
-```
-
+### Dockerfile
 Warning !!
 Since the v4.9700 you need add the "libcurl4-gnutls-dev"
 In your Dockerfile :
 ```sh
 ...
 RUN apt-get install -y libcurl4-gnutls-dev
+...
+```
+
+If you want retrieve the beta version instead change release by beta in the wget url like this : 
+```sh
+RUN wget -q https://releases.domoticz.com/releases/release/domoticz_linux_armv7l.tgz && \
+...
+```
+by
+```sh
+RUN wget -q https://releases.domoticz.com/releases/beta/domoticz_linux_armv7l.tgz && \
 ...
 ```
 
