@@ -1,6 +1,6 @@
-# Domoticz Docker for RPI (v.4.9700)
+# Domoticz Docker for RPI (latest release)
 
-## Raspian
+## Raspbian
 
 ### Download Raspbian
 ```sh
@@ -26,7 +26,7 @@ network={
     psk="Your_wifi_password"
 }
 ```
-#### Static IP
+#### Static IP (Optional)
 ```sh
 sudo nano /etc/dhcpcd.conf
 ```
@@ -264,7 +264,7 @@ E: USEC_INITIALIZED=3926090
 
 ### Run without docker-compose
 
-#### With 1 USB port no fixing
+#### With 1 USB port no fixing (floorplans and scripts volumes are optional)
 ```sh
 sudo docker run 
 --device=/dev/ttyACM0 
@@ -276,7 +276,7 @@ sudo docker run
 --name domoticz --restart=always -d my_domoticz
 ```
 
-#### With 2 USB ports fixing
+#### With 2 USB ports fixing (floorplans and scripts volumes are optional)
 ```sh
  sudo docker run 
  --device=/dev/ttyUSBZSTICK 
@@ -297,16 +297,16 @@ sudo docker ps
 ```
 For SSH into container
 ```sh
-sudo docker exec -i -t e766a56120a7 /bin/bash #by ID
+sudo docker exec -i -t {container_id} /bin/bash #by ID
 ```
 or
 ```sh
-sudo docker exec -i -t domoticz /bin/bash #by Name
+sudo docker exec -i -t {container_name} /bin/bash #by Name
 ```
 
-#### Inspect a restarting contener
+#### Inspect a restarting container
 Add in your docker-compose.yml file
 ```sh
 command: tail -f /dev/null
 ```
-And re run your container, you can now inspect your contener
+And re run your container, you can now inspect your container
