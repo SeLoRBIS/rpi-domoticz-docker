@@ -9,10 +9,10 @@ script:
 # prepare qemu
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # build image
-- docker build -t $CI_REGISTRY_USER/rpi-domoticz-docker-test .
+- docker build -t $CI_REGISTRY_USER/rpi-domoticz .
 # test image
-- docker run $CI_REGISTRY_USER/rpi-domoticz-docker-test --version
+- docker run $CI_REGISTRY_USER/rpi-domoticz --version
 # push image
 - docker login -u="$CI_REGISTRY_USER" -p="$CI_REGISTRY_PASSWORD"    
-- docker tag $CI_REGISTRY_USER/rpi-domoticz-docker-test $CI_REGISTRY_USER/rpi-domoticz-docker-test:latest
-- docker push $CI_REGISTRY_USER/rpi-domoticz-docker-test:latest
+- docker tag $CI_REGISTRY_USER/rpi-domoticz $CI_REGISTRY_USER/rpi-domoticz:travis
+- docker push $CI_REGISTRY_USER/rpi-domoticz:travis
