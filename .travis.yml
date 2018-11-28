@@ -1,11 +1,18 @@
-dist: trusty
+sudo: required
 
-jobs:
-  include:
-    - stage: build docker image
-      script:
-      - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin
-      - docker build -t rpi-domoticz-docker-test .
-      - docker images
-      - docker tag travis-ci-build-stages-demo $DOCKER_USERNAME/rpi-domoticz-docker-test
-      - docker push $CI_REGISTRY_USER/rpi-domoticz-docker-test   
+services:
+- docker
+
+language: bash
+
+script:
+# prepare qemu
+- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+# build image
+- docker build -t $CI_REGISTRY_USER/rpi-domoticz-docker-test .
+# test image
+- docker run $CI_REGISTRY_USER/rpi-domoticz-docker-test --version
+# push image
+- docker login -u="$CI_REGISTRY_USER" -p="$CI_REGISTRY_PASSWORD"    
+- docker tag $CI_REGISTRY_USER/rpi-domoticz-docker-test $CI_REGISTRY_USER/rpi-domoticz-docker-test:latest
+- docker push $CI_REGISTRY_USER/rpi-domoticz-docker-test:latest
