@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/SeLoRBIS/rpi-domoticz-docker.svg?branch=master)](https://travis-ci.com/SeLoRBIS/rpi-domoticz-docker)
+
 # Domoticz Docker for RPI (latest release)
 
 ## Raspbian
