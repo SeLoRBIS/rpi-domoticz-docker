@@ -13,7 +13,7 @@ script:
 # push image
 - >
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-    docker login -u="$CI_REGISTRY_USER" -p="$CI_REGISTRY_PASSWORD"   
+    echo "$CI_REGISTRY_PASSWORD" | docker login --username $CI_REGISTRY_USER --password-stdin   
     docker tag $CI_REGISTRY_USER/rpi-domoticz $CI_REGISTRY_USER/rpi-domoticz:travis
     docker push $CI_REGISTRY_USER/rpi-domoticz:travis
   fi
