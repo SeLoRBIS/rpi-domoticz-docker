@@ -1,0 +1,11 @@
+dist: trusty
+
+jobs:
+  include:
+    - stage: build docker image
+      script:
+      - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin
+      - docker build -t rpi-domoticz-docker-test .
+      - docker images
+      - docker tag travis-ci-build-stages-demo $DOCKER_USERNAME/rpi-domoticz-docker-test
+      - docker push $CI_REGISTRY_USER/rpi-domoticz-docker-test   
