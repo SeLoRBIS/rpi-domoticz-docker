@@ -9,11 +9,11 @@ script:
 # prepare qemu
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # build image
-- docker build -t $CI_REGISTRY_USER/rpi-domoticz .
+- docker build -t $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE .
 # push image
 - >
   if [ "$TRAVIS_BRANCH" == "domoticz-beta" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo "$CI_REGISTRY_PASSWORD" | docker login --username $CI_REGISTRY_USER --password-stdin   
-    docker tag $CI_REGISTRY_USER/rpi-domoticz $CI_REGISTRY_USER/rpi-domoticz:domoticz-beta
-    docker push $CI_REGISTRY_USER/rpi-domoticz:domoticz-beta
+    docker tag $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE $CI_REGISTRY_USER/rpi-domoticz:beta-latest
+    docker push $CI_REGISTRY_USER/$CI_REGISTRY_IMAGE:beta-latest
   fi
