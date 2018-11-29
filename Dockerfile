@@ -13,7 +13,7 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Get last domoticz release and add packages in container
 RUN mkdir -p /root/domoticz
-RUN wget -q https://releases.domoticz.com/releases/release/domoticz_linux_armv7l.tgz && \
+RUN wget -q https://releases.domoticz.com/releases/beta/domoticz_linux_armv7l.tgz && \
     tar xzf domoticz_linux_armv7l.tgz -C /root/domoticz/
 
 # Expose port.
