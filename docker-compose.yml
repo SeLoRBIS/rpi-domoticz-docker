@@ -3,10 +3,14 @@ version: '3.6'
 services:
   domoticz:
     container_name: domoticz-home
-    image: selorbis/domoticz:latest
+    build:
+      context: .    
     volumes:
       - /etc/localtime:/etc/localtime
-      - ./volumes/backup/domoticz.db:/root/domoticz/domoticz.db:rw
+      - domoticz_config:/config
     ports:
       - "8084:8080"
     restart: always
+
+volumes:
+  domoticz_config:
