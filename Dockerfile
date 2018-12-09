@@ -15,6 +15,11 @@ RUN apt-get clean && apt-get autoclean \
 RUN mkdir -p /root/domoticz \
     && wget -q https://releases.domoticz.com/releases/release/domoticz_linux_armv7l.tgz \
     && tar xzf domoticz_linux_armv7l.tgz -C /root/domoticz/
+    
+### Specific Zigbee2MQTT
+RUN cd /root/domoticz/plugins \
+    && git clone https://github.com/stas-demydiuk/domoticz-zigbee2mqtt-plugin.git zigbee2mqtt
+### Specific Zigbee2MQTT
 
 VOLUME /config
 
