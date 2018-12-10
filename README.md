@@ -1,7 +1,7 @@
 # Domoticz Docker for RPI (beta release)
 
 ## Status
-[![Build Status](https://travis-ci.org/SeLoRBIS/rpi-domoticz-docker.svg?branch=domoticz-beta)](https://travis-ci.org/SeLoRBIS/rpi-domoticz-docker)
+[![Build Status](https://travis-ci.com/SeLoRBIS/rpi-domoticz-docker.svg?branch=domoticz-beta)](https://travis-ci.com/SeLoRBIS/rpi-domoticz-docker)
 
 ## Raspbian
 
