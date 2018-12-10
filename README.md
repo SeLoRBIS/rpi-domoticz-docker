@@ -1,4 +1,4 @@
-# Domoticz Docker for RPI (latest release)
+# Domoticz Docker image for RPI (latest release)
 
 ## Status
 [![Build Status](https://travis-ci.com/SeLoRBIS/rpi-domoticz-docker.svg?branch=master)](https://travis-ci.com/SeLoRBIS/rpi-domoticz-docker)
